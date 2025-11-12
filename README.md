@@ -3,7 +3,7 @@ Proyecto de Proyecto V1.0
 # Guía de Estilos y Arquitectura
 
 ## Objetivo
-Diseñar un **login claro, accesible (WCAG 2.1 AA)**, usable en móvil, seguro y con mínima fricción para el usuario.
+Diseñar un **login claro, accesible**, usable en móvil, seguro y con mínima fricción para el usuario.
 
 ---
 
