@@ -7,10 +7,58 @@
     <meta name="author" content="Manuel Jesús Contreras Pacheco" />
     <meta name="application-name" content="Clases" />
     <meta name="generator" content="VSCode" />
-    <link rel="stylesheet" href />
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/index.js"></script>
     <title>LocalFood</title>
 </head>
 <body>
+    <main class="login-container">
+        <h1>SocialFood</h1>
+        <p class="subtitle">Inicia sesión con tu cuenta</p>
+
+        <!-- Login con email y contraseña -->
+        <form id="loginForm" class="login-form" novalidate>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                <span class="error" id="emailError" aria-live="assertive"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="********" required>
+                    <button type="button" id="togglePassword" aria-label="Mostrar contraseña"></button>
+                </div>
+                <span class="error" id="passwordError" aria-live="assertive"></span>
+            </div>
+
+            <div class="form-group checkbox">
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Recordarme</label>
+            </div>
+
+            <button type="submit" id="loginBtn">Iniciar sesión</button>
+        </form>
+
+        <div class="divider">o</div>
+
+        <!-- Login con Google -->
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+<div id="gSignInWrapper">
+    <div id="g_id_onload"
+         data-client_id="<?= htmlspecialchars($googleClientId) ?>"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-login_uri=""
+         data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+</div>
+
+        <p class="register-link">¿No tienes cuenta? <a href="registro.html">Registrarse</a></p>
+    </main>
+
     
 </body>
 </html>
