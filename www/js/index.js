@@ -1,36 +1,25 @@
-// Toggle mostrar/ocultar contraseña
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
-
-togglePassword.addEventListener('click', () => {
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-});
-
-// Validación simple y feedback
-const loginForm = document.getElementById('loginForm');
-const emailError = document.getElementById('emailError');
-const passwordError = document.getElementById('passwordError');
-
-loginForm.addEventListener('submit', function(e) {
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    let valid = true;
 
-    emailError.textContent = '';
-    passwordError.textContent = '';
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("password").value;
 
-    if (!loginForm.email.value) {
-        emailError.textContent = 'El correo es obligatorio';
-        valid = false;
+    let datos = new FormData();
+    datos.append("email", email);
+    datos.append("password", pass);
+
+    const resp = await fetch("../../index.php?controlador=loginControlador&metodo=comprobar", {
+        method: "POST",
+        body: datos
+    });
+
+    const json = await resp.json();
+
+    if (!json.ok) {
+        alert(json.msg);
+        return;
     }
 
-    if (!loginForm.password.value) {
-        passwordError.textContent = 'La contraseña es obligatoria';
-        valid = false;
-    }
-
-    if (valid) {
-        // Aquí se integraría la llamada al backend
-        console.log('Formulario válido. Enviar datos al backend...');
-    }
+    // LOGIN CORRECTO → redirigir
+    window.location.href = "../../vista/html/panel.html";
 });
