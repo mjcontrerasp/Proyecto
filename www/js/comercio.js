@@ -1,30 +1,31 @@
-document.getElementById("formComercio").addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    let valido = true;
+document.getElementById("btnPublicar").addEventListener("click", () => {
+    const tipo = document.getElementById("tipo").value;
+    const cantidad = document.getElementById("cantidad").value;
+    const estado = document.getElementById("estado").value;
+    const fecha = document.getElementById("fecha").value;
 
-    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+    const msg = document.getElementById("msg");
 
-    const nombre = document.getElementById("nombreComercio");
-    const cantidad = document.getElementById("cantidad");
-    const ubicacion = document.getElementById("ubicacion");
-
-    if (nombre.value.trim() === "") {
-        nombre.nextElementSibling.textContent = "Campo obligatorio.";
-        valido = false;
+    if (!tipo || !cantidad || !estado || !fecha) {
+        msg.textContent = "Debes completar los campos obligatorios.";
+        msg.style.color = "red";
+        return;
     }
 
-    if (cantidad.value <= 0) {
-        cantidad.nextElementSibling.textContent = "Debe ser un número positivo.";
-        valido = false;
-    }
+    msg.textContent = "Excedente publicado correctamente.";
+    msg.style.color = "green";
 
-    if (ubicacion.value.trim() === "") {
-        ubicacion.nextElementSibling.textContent = "Indica la ubicación.";
-        valido = false;
-    }
+    const lista = document.getElementById("listaDonaciones");
+    const card = document.createElement("div");
+    card.className = "donacion";
 
-    if (valido) {
-        this.submit();
-    }
+    card.innerHTML = `
+        <strong>${tipo}</strong><br>
+        Cantidad: ${cantidad}<br>
+        Estado: ${estado}<br>
+        Disponible: ${fecha}<br>
+        <button class="btn btnPequeña">Marcar como Recogido</button>
+    `;
+
+    lista.appendChild(card);
 });
