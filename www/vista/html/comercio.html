@@ -8,57 +8,71 @@
     <meta name="application-name" content="Clases" />
     <meta name="generator" content="VSCode" />
     <link rel="stylesheet" href="../../css/comercio.css">
-    <script src="../js/registrar-usuario.js" defer></script>
-    <title>Registro - SocialFood Badajoz</title>
+    <script src="../js/comercio.js" defer></script>
+    <title>Panel Comercio - SocialFood</title>
 </head>
-
 <body>
-    <main class="container">
-        <h1>Crear cuenta</h1>
-        <p class="subtitle">Regístrate para acceder a SocialFood Badajoz</p>
 
-        <form id="formRegistro" novalidate aria-describedby="erroresRegistro">
-            
-            <div class="form-group">
-                <label for="nombre">Nombre completo</label>
-                <input id="nombre" name="nombre" type="text" required autocomplete="name">
-                <small class="error" role="alert"></small>
-            </div>
-            <div class="container">
-    <h2>Selecciona tu rol</h2>
+<header class="topbar">
+    <h1>Panel de Comercio</h1>
+</header>
 
-            <div class="form-group">
-                <label for="rol">Tipo de usuario</label>
-                <select id="rol" name="rol" aria-label="Selecciona tipo de usuario">
-                    <option value="">Selecciona una opción…</option>
-                    <option value="comercio">Comercio</option>
-                    <option value="voluntario">Voluntario</option>
-                </select>
-                <div class="error" id="errorRol" role="alert"></div>
-            </div>
+<main class="container">
 
+    <section class="card">
+        <h2>Publicar Excedente</h2>
 
-            <div class="form-group">
-                <label for="email">Correo electrónico</label>
-                <input id="email" name="email" type="email" required autocomplete="email">
-                <small class="error" role="alert"></small>
-            </div>
+        <div class="form-group">
+            <label>Tipo de alimento</label>
+            <select id="tipo">
+                <option value="">Selecciona…</option>
+                <option>Panadería</option>
+                <option>Verduras</option>
+                <option>Comida preparada</option>
+                <option>Lácteos</option>
+            </select>
+        </div>
 
-            <div class="form-group password-group">
-                <label for="password">Contraseña</label>
-                <input id="password" name="password" type="password" required autocomplete="new-password">
-                <button type="button" class="toggle-password" aria-label="Mostrar u ocultar contraseña">👁️</button>
-                <small class="error" role="alert"></small>
-            </div>
+        <div class="form-group">
+            <label>Cantidad (uds / kg)</label>
+            <input type="number" id="cantidad" min="1">
+        </div>
 
-            <button type="submit" class="btn-primario">Crear cuenta</button>
+        <div class="form-group">
+            <label>Estado</label>
+            <select id="estado">
+                <option value="">Selecciona…</option>
+                <option>Envasado</option>
+                <option>Fresco</option>
+            </select>
+        </div>
 
-            <p class="small">
-                ¿Ya tienes cuenta?
-                <a href="login.html">Iniciar sesión</a>
-            </p>
+        <div class="form-group">
+            <label>Fecha y hora disponibles</label>
+            <input type="datetime-local" id="fecha">
+        </div>
 
-        </form>
-    </main>
+        <div class="form-group">
+            <label>Observaciones</label>
+            <textarea id="obs"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Foto (opcional)</label>
+            <input type="file" id="foto" accept="image/*">
+        </div>
+
+        <button class="btn" id="btnPublicar">Publicar</button>
+        <p id="msg" role="alert"></p>
+    </section>
+
+    <section class="card">
+        <h2>Mis Donaciones</h2>
+        <div id="listaDonaciones"></div>
+    </section>
+
+</main>
+
+<script src="comercio.js"></script>
 </body>
 </html>

@@ -8,28 +8,45 @@
     <meta name="application-name" content="Clases" />
     <meta name="generator" content="VSCode" />
     <link rel="stylesheet" href="../../css/voluntario.css">
-    <script src="../js/voluntario.js" defer></script>
-    <title>Comercios Registrados - SocialFood Badajoz</title>
+    <script src="../js/voluntario.js"></script>
+    <title>Panel Voluntario - SocialFood</title>
 </head>
-
 <body>
-    <main class="container">
-        <h1>Comercios Registrados</h1>
-        <p class="subtitle">Listado de comercios que colaboran con SocialFood Badajoz</p>
 
-        <section id="listadoComercios" class="cards">
+<header class="topbar">
+    <h1>Donaciones Disponibles</h1>
+</header>
 
-            <!-- Ejemplo de tarjeta (el backend puede imprimir en bucle) -->
-            <article class="card">
-                <img src="ejemplo.jpg" alt="Imagen del comercio">
-                <div class="card-body">
-                    <h2>Panadería La Espiga</h2>
-                    <p>Cantidad disponible: 12 kg</p>
-                    <p>Ubicación: Calle Mayor 23</p>
-                </div>
-            </article>
+<main class="container">
 
-        </section>
-    </main>
+    <section class="card">
+        <h2>Filtros</h2>
+
+        <div class="form-group">
+            <label>Tipo de alimento</label>
+            <select id="filtroTipo">
+                <option value="">Todos</option>
+                <option>Panadería</option>
+                <option>Verduras</option>
+                <option>Comida preparada</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha</label>
+            <input type="date" id="filtroFecha">
+        </div>
+
+        <button class="btn" id="btnFiltrar">Filtrar</button>
+    </section>
+
+    <section class="card">
+        <h2>Resultados</h2>
+        <div id="donaciones"></div>
+    </section>
+
+</main>
+
+<script src="voluntario.js"></script>
 </body>
 </html>

@@ -27,7 +27,10 @@ class loginControlador {
 
         session_start();
         $_SESSION['usuario'] = $usuario['email'];
-
-        echo json_encode(['ok' => true]);
+        $_SESSION['rol'] = $usuario['rol']; 
+        echo json_encode([
+            'ok' => true,
+            'rol' => $usuario['rol']
+        ]);
     }
 }

@@ -20,6 +20,14 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
         return;
     }
 
-    // LOGIN CORRECTO → redirigir
-    window.location.href = "../../vista/html/panel.html";
+    // Redirección según rol
+    if (json.rol === "voluntario") {
+        window.location.href = "../../vista/html/voluntario.html";
+    } 
+    else if (json.rol === "comercio") {
+        window.location.href = "../../vista/html/comercio.html";
+    } 
+    else {
+        alert("Rol desconocido: " + json.rol);
+    }
 });
