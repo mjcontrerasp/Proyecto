@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"content="En esta página encontrarás el EXAMEN de lenguaje de marcas"/>
+    <meta name="keywords" content="html, lenguaje, lenguaje de marcado, código html, etiqueta"/>
+    <meta name="author" content="Manuel Jesús Contreras Pacheco" />
+    <meta name="application-name" content="Clases" />
+    <meta name="generator" content="VSCode" />
+    <link rel="stylesheet" href="../css/comercio.css">
+    <script src="../js/comercio.js" defer></script>
+    <title>Comercio - SocialFood Badajoz</title>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Mi Comercio</h1>
+        <p class="subtitle">Introduce los datos de tu comercio y tus donaciones</p>
+
+        <form id="formComercio" enctype="multipart/form-data" novalidate>
+
+            <div class="form-group">
+                <label for="nombreComercio">Nombre del comercio</label>
+                <input id="nombreComercio" name="nombreComercio" type="text" required>
+                <small class="error" role="alert"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad de comida disponible (kg)</label>
+                <input id="cantidad" name="cantidad" type="number" min="0" required>
+                <small class="error" role="alert"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen del producto o lote</label>
+                <input id="imagen" name="imagen" type="file" accept="image/*">
+                <small class="error" role="alert"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="ubicacion">Ubicación (dirección completa)</label>
+                <input id="ubicacion" name="ubicacion" type="text" required autocomplete="street-address">
+                <small class="error" role="alert"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción (opcional)</label>
+                <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primario">Guardar información</button>
+
+        </form>
+    </main>
+</body>
+</html>
