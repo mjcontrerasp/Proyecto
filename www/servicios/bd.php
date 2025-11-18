@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * Clase BD
+ * Gestiona la conexión a la base de datos.
+ */
 class BD {
+
+    /**
+     * Crea y devuelve una conexión mysqli.
+     *
+     * @param array $config Configuración de la base de datos.
+     * @return mysqli Objeto de conexión.
+     */
     public static function conexion($config) {
         $db = new mysqli(
             $config['bd_host'],
