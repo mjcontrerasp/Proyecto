@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/comercio.css">
+    <script src="../../js/registrar-comercio.js" defer></script>
+    <title>Registro Comercio</title>
+</head>
+<body>
+<main class="container">
+    <h1>Completa los datos del comercio</h1>
+    <form id="formComercio">
+        <input type="hidden" id="id_usuario" name="id_usuario" value="">
+
+        <div class="form-group">
+            <label for="nombre_comercial">Nombre comercial</label>
+            <input type="text" id="nombre_comercial" name="nombre_comercial" required>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion">
+        </div>
+
+        <div class="form-group">
+            <label for="horario">Horario</label>
+            <input type="text" id="horario" name="horario">
+        </div>
+
+        <div class="form-group checkbox-label">
+    <input type="checkbox" id="activo" name="activo" checked>
+    <label for="activo">Activo</label>
+</div>
+
+        <button type="submit">Registrar Comercio</button>
+    </form>
+</main>
+</body>
+</html>

@@ -1,15 +1,20 @@
-# Arquitectura Tecnológica - SocialFood Badajoz
+# Arquitectura Tecnológica
 
-## Stack recomendado
-- Frontend: HTML, CSS, JavaScript
-- Backend: PHP
-- Base de datos: MySQL
-- Scripts SQL en `/src/sql`
-- MVC básico con carpetas: controlador, modelo, vista
-- Archivos principales: index.php, config.php
+## 1. Descripción general
+Sistema web SocialFood para gestionar usuarios y comercios, con roles voluntario y comercio.
 
-## Seguridad
-- Validación de entradas del usuario
-- Protección contra inyección SQL y XSS
-- Uso de HTTPS para comunicaciones
-- Manejo seguro de contraseñas y sesiones
+## 2. Tecnologías utilizadas
+
+| Componente       | Tecnología / Herramienta        | Función                                  |
+|-----------------|-------------------------------|----------------------------------------|
+| Frontend        | HTML, CSS, JavaScript         | Formularios, interfaz de usuario, redirecciones según rol |
+| Backend         | PHP                           | Lógica de negocio, controladores, manejo de sesiones y formularios |
+| Base de datos   | phpMyAdmin                    | Almacenamiento de usuarios, comercios y roles |
+| Servidor local  | XAMPP                         | Entorno de ejecución local de PHP y MySQL |
+| Comunicación    | Fetch / AJAX                  | Envío de datos de formularios sin recargar la página |
+
+## 3. Patrón de arquitectura
+- MVC (Modelo-Vista-Controlador)
+  - **Modelo:** interacción con la base de datos (`usuario.php`, `comercio.php`)
+  - **Vista:** archivos HTML y CSS para la interfaz
+  - **Controlador:** PHP que procesa las solicitudes del usuario y devuelve resultados

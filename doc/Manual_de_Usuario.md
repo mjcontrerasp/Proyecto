@@ -1,28 +1,43 @@
-# Manual de Usuario - SocialFood Badajoz
+# Manual de Usuario
 
-## Introducción
-Este manual explica cómo interactuar con la plataforma SocialFood Badajoz para donantes, voluntarios/ONG y visitantes.
+## 1. Introducción
+Este manual explica cómo usar la aplicación para gestionar usuarios y comercios/voluntarios.  
+Permite registrarse, iniciar sesión y gestionar datos según el rol asignado.
 
-## Registro
-- Comercios y restaurantes: registrar datos básicos (nombre, teléfono, email, contraseña).
-- ONG/Voluntarios: registro con información de contacto.
-- Confirmación mediante email.
+### Requisitos mínimos
+- Navegador moderno (Chrome, Edge, Firefox)
+- Conexión a internet
+- Permitir cookies y JavaScript
 
-## Funcionalidades principales
-### Comercios/Restaurantes
-- Publicar excedentes: tipo de comida, cantidad, horario de recogida.
-- Confirmar recogida.
+---
 
-### Voluntarios/ONG
-- Listado de donaciones.
-- Filtrado por tipo de alimento, distancia, fecha.
-- Contactar con el comercio (teléfono o WhatsApp).
-- Confirmar recogida y añadir observaciones.
+## 2. Acceso a la aplicación
+### Registro de usuario
+1. Abrir la aplicación y localizar la opción de **Registro**.
+2. Completar los campos solicitados: nombre, correo electrónico, teléfono, contraseña y rol.
+3. Pulsar **Registrar**.
 
-### Visitante Público
-- Acceder a información general del proyecto.
+> Nota: Si se selecciona rol “comercio”, después se pedirá completar los datos del comercio.
 
-## Consejos de uso
-- Revisar el listado de donaciones frecuentemente.
-- Mantener actualizados los horarios y disponibilidad.
-- Seguir buenas prácticas de seguridad: no compartir credenciales.
+### Inicio de sesión
+1. Abrir la aplicación y localizar la opción de **Iniciar sesión**.
+2. Introducir correo electrónico y contraseña.
+3. Pulsar **Iniciar sesión**.
+
+---
+
+## 3. Funcionalidades principales
+- **Registro de usuario**
+- **Inicio de sesión**
+- **Registro de comercio** (solo para usuarios con rol comercio)
+- **Redirección según rol**: al iniciar sesión, el sistema mostrará automáticamente la sección correspondiente según el rol.
+
+
+## 4. Errores comunes y soluciones
+| Error | Solución |
+|-------|---------|
+| Correo o contraseña incorrectos | Revisar que los datos ingresados sean correctos |
+| Campos obligatorios vacíos | Completar todos los campos requeridos |
+| Usuario ya registrado | Usar otro correo electrónico |
+
+---
