@@ -10,7 +10,6 @@ try {
     $controlador = $_GET['controlador'] ?? null;
     $metodo = $_GET['metodo'] ?? null;
 
-    // Si no manda controlador ni método → carga el login
     if (!$controlador || !$metodo) {
         require $config['dir_html'] . 'index.html';
         die();

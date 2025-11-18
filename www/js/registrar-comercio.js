@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id_usuario = urlParams.get("id_usuario");
-    document.getElementById("id_usuario").value = id_usuario;
-
     const form = document.getElementById("formComercio");
+    const id_usuario = new URLSearchParams(window.location.search).get("id_usuario");
+    document.getElementById("id_usuario").value = id_usuario;
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -16,15 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: datos
             });
 
-            const text = await resp.text();
-            let json;
-            try {
-                json = JSON.parse(text);
-            } catch (err) {
-                console.error("Error parseando JSON:", err, text);
-                alert("Ocurrió un error en el servidor");
-                return;
-            }
+            const json = await resp.json();
 
             if (!json.ok) {
                 alert(json.msg);
@@ -35,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "index.html";
 
         } catch (err) {
-            console.error("Error al enviar el formulario:", err);
+            console.error("Error al registrar comercio:", err);
             alert("Ocurrió un error en la comunicación con el servidor");
         }
     });
