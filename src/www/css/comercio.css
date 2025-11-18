@@ -65,3 +65,21 @@ button:focus {
     font-size: 0.8rem;
     height: 16px;
 }
+
+.checkbox-label {
+    display: flex;           
+    align-items: center;     
+    gap: 8px;                
+    margin-bottom: 16px;     
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;             
+    height: 20px;           
+    cursor: pointer;         
+}
+
+.checkbox-label label {
+    font-size: 16px;        
+    cursor: pointer;         
+}
