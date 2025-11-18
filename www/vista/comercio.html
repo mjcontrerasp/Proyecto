@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"content="En esta página encontrarás el EXAMEN de lenguaje de marcas"/>
+    <meta name="keywords" content="html, lenguaje, lenguaje de marcado, código html, etiqueta"/>
+    <meta name="author" content="Manuel Jesús Contreras Pacheco" />
+    <meta name="application-name" content="Clases" />
+    <meta name="generator" content="VSCode" />
+    <link rel="stylesheet" href="../css/comercio.css">
+    <script src="../js/comercio.js" defer></script>
+    <title>Panel Comercio - SocialFood</title>
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Panel de Comercio</h1>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Publicar Excedente</h2>
+
+        <div class="form-group">
+            <label>Tipo de alimento</label>
+            <select id="tipo">
+                <option value="">Selecciona…</option>
+                <option>Panadería</option>
+                <option>Verduras</option>
+                <option>Comida preparada</option>
+                <option>Lácteos</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Cantidad (uds / kg)</label>
+            <input type="number" id="cantidad" min="1">
+        </div>
+
+        <div class="form-group">
+            <label>Estado</label>
+            <select id="estado">
+                <option value="">Selecciona…</option>
+                <option>Envasado</option>
+                <option>Fresco</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha y hora disponibles</label>
+            <input type="datetime-local" id="fecha">
+        </div>
+
+        <div class="form-group">
+            <label>Observaciones</label>
+            <textarea id="obs"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Foto (opcional)</label>
+            <input type="file" id="foto" accept="image/*">
+        </div>
+
+        <button class="btn" id="btnPublicar">Publicar</button>
+        <p id="msg" role="alert"></p>
+    </section>
+
+    <section class="card">
+        <h2>Mis Donaciones</h2>
+        <div id="listaDonaciones"></div>
+    </section>
+
+</main>
+
+<script src="comercio.js"></script>
+</body>
+</html>
