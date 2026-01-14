@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"content="En esta página encontrarás el EXAMEN de lenguaje de marcas"/>
+    <meta name="keywords" content="html, lenguaje, lenguaje de marcado, código html, etiqueta"/>
+    <meta name="author" content="Manuel Jesús Contreras Pacheco" />
+    <meta name="application-name" content="Clases" />
+    <meta name="generator" content="VSCode" />
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../../css/perfil_usuario.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Perfil de Usuario</h1>
+        <p class="subtitle">Actualiza tus datos personales</p>
+        <form class="login-form" action="#" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+            <div class="form-group password-wrapper">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Nueva contraseña">
+                <button type="button" id="togglePassword">👀</button>
+            </div>
+            <button type="submit">Guardar cambios</button>
+        </form>
+        <div class="divider"></div>
+        <a href="index.html" class="register-link">Volver al inicio</a>
+    </div>
+</body>
+</html>
