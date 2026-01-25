@@ -31,8 +31,9 @@
                             <tr>
                                 <td>{{ $donacion->tipo_comida ?? 'N/A' }}</td>
                                 <td>{{ $donacion->cantidad ?? 'N/A' }}</td>
-                                <td>{{ $donacion->comercio ?? 'N/A' }}</td>
-                                <td>{{ $donacion->voluntario ?? 'N/A' }}</td>
+                                <td>{{ $donacion->comercio->nombre_comercial ?? 'N/A' }}</td>
+<td>{{ $donacion->voluntario->nombre ?? 'N/A' }}</td>
+
                                 <td>{{ $donacion->estado ?? 'En camino' }}</td>
                                 <td>
                                     <form method="POST" action="{{ route('donaciones.confirmar-recepcion', $donacion->id) }}" class="d-inline">

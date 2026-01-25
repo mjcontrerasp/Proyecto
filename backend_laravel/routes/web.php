@@ -48,4 +48,7 @@ Route::middleware('auth')->group(function () {
 
     // CRUD DONACIONES
     Route::resource('donaciones', DonacionController::class);
+    Route::put('/donaciones/{id}/confirmar-recepcion', [DonacionController::class, 'confirmarRecepcion'])
+    ->name('donaciones.confirmar-recepcion');
+
 });

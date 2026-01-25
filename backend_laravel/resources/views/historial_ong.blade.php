@@ -24,9 +24,11 @@
                             <tr>
                                 <td>{{ $donacion->tipo_comida ?? 'N/A' }}</td>
                                 <td>{{ $donacion->cantidad ?? 'N/A' }}</td>
-                                <td>{{ $donacion->comercio ?? 'N/A' }}</td>
-                                <td>{{ $donacion->voluntario ?? 'N/A' }}</td>
-                                <td>{{ $donacion->fecha_entrega ?? 'N/A' }}</td>
+                                <td>{{ $donacion->comercio->nombre_comercial ?? 'N/A' }}</td>
+<td>{{ $donacion->voluntario->nombre ?? 'N/A' }}</td>
+
+                                <td>{{ optional($donacion->updated_at)->format('d/m/Y H:i') ?? 'N/A' }}</td>
+
                             </tr>
                         @empty
                             <tr>
