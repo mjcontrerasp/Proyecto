@@ -8,12 +8,9 @@ body {
     font-family: 'Inter', system-ui, sans-serif;
     background-color: #f8f9fa;
     color: #212529;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
     min-height: 100vh;
 }
+
 
 .list-container {
     background-color: #ffffff;
@@ -23,7 +20,9 @@ body {
     max-width: 900px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
+    margin: 2rem auto; /* 🔥 esto centra sin romper layout */
 }
+
 
 h1 {
     font-size: 2rem;

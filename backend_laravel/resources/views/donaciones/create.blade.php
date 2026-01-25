@@ -5,10 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             
-            {{-- Encabezado --}}
-            <header class="topbar mb-5">
-                <h1>Panel de Comercio</h1>
-            </header>
+            
 
             <main class="container-main">
 
@@ -97,15 +94,7 @@
                     </div>
                 </section>
 
-                {{-- Lista de Donaciones --}}
-                <section class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Mis Donaciones</h2>
-                        <div id="listaDonaciones">
-                            {{-- Las donaciones se cargarán aquí dinámicamente --}}
-                        </div>
-                    </div>
-                </section>
+                
 
             </main>
 

@@ -1,20 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Inter', system-ui, sans-serif;
     background-color: #f8f9fa;
     color: #212529;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
     min-height: 100vh;
 }
 
+/* Contenedor visual */
 .list-container {
     background-color: #ffffff;
     padding: 2rem;
@@ -23,6 +14,7 @@ body {
     max-width: 900px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
+    margin: 2rem auto;
 }
 
 h1 {
@@ -54,7 +46,7 @@ h1 {
 }
 
 .confirm-btn {
-    padding: 0.3rem 0.6rem;
+    padding: 0.4rem 0.7rem;
     background-color: #198754;
     color: #fff;
     border: none;

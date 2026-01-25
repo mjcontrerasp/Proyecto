@@ -5,15 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            {{-- BOTÓN LOGOUT --}}
-            <div class="d-flex justify-content-end mb-3">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">
-                        Cerrar sesión
-                    </button>
-                </form>
-            </div>
+            
 
             <div class="list-container">
                 <h1>Donaciones Disponibles</h1>
