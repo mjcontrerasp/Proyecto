@@ -50,5 +50,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('donaciones', DonacionController::class);
     Route::put('/donaciones/{id}/confirmar-recepcion', [DonacionController::class, 'confirmarRecepcion'])
     ->name('donaciones.confirmar-recepcion');
+    Route::put('/donaciones/{id}/recoger', [DonacionController::class, 'recoger'])->name('donaciones.recoger');
+    Route::put('/donaciones/{id}/recoger', [DonacionController::class, 'recoger'])
+    ->name('donaciones.recoger');
+
+
 
 });
+
+Route::put('/voluntario/donaciones/{id}/recoger', [DonacionController::class, 'recoger'])
+     ->name('voluntario.donaciones.recoger');

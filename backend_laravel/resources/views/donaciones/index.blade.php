@@ -18,13 +18,15 @@
                 <table class="donaciones-table table table-striped">
                     <thead>
                         <tr>
-                            <th>Tipo de comida</th>
-                            <th>Cantidad</th>
-                            <th>Fecha límite</th>
-                            <th>Punto de recogida</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
+    <th>Tipo de comida</th>
+    <th>Cantidad</th>
+    <th>Fecha límite</th>
+    <th>Punto de recogida</th>
+    <th>Estado</th>
+    <th>Voluntario</th>
+    <th>Acciones</th>
+</tr>
+
                     </thead>
                     <tbody>
                         @forelse($donaciones ?? [] as $donacion)
@@ -34,14 +36,24 @@
                                 <td>{{ $donacion->fecha_hora ?? 'N/A' }}</td>
                                 <td>{{ $donacion->punto_recogida ?? 'N/A' }}</td>
                                 <td>{{ $donacion->estado ?? 'No asignada' }}</td>
-                                <td>
-                                    <a href="{{ route('donaciones.edit', $donacion->id) }}" class="edit-btn btn btn-sm btn-warning">Editar</a>
-                                    <form method="POST" action="{{ route('donaciones.destroy', $donacion->id) }}" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete-btn btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta donación?')">Eliminar</button>
-                                    </form>
-                                </td>
+
+<td>
+    @if($donacion->voluntario)
+        {{ $donacion->voluntario->nombre }}
+    @else
+        <span class="text-muted">Sin asignar</span>
+    @endif
+</td>
+
+<td>
+    <a href="{{ route('donaciones.edit', $donacion->id) }}" class="edit-btn btn btn-sm btn-warning">Editar</a>
+    <form method="POST" action="{{ route('donaciones.destroy', $donacion->id) }}" class="d-inline">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="delete-btn btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta donación?')">Eliminar</button>
+    </form>
+</td>
+
                             </tr>
                         @empty
                             <tr>

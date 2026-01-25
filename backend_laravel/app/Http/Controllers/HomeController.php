@@ -23,26 +23,26 @@ class HomeController extends Controller
         return view('perfil_usuario');
     }
 
-    public function actualizarPerfil(Request $request)
-    {
-        $user = Auth::user();
+   public function actualizarPerfil(Request $request)
+{
+    $user = Auth::user();
 
-        $data = $request->validate([
-            'nombre' => 'required|string|max:100',
-            'email' => 'required|email|unique:usuarios,email,' . $user->id_usuario . ',id_usuario',
-            'password' => 'nullable|string|min:6'
-        ]);
+    $data = $request->validate([
+        'nombre' => 'required|string|max:100',
+        'email' => 'required|email|unique:usuarios,email,' . $user->id_usuario . ',id_usuario',
+        'password' => 'nullable|string|min:6'
+    ]);
 
-        $user->nombre = $data['nombre'];
-        $user->email = $data['email'];
+    $user->nombre = $data['nombre'];
+    $user->email = $data['email'];
 
-        if ($data['password']) {
-            $user->contrasena_hash = Hash::make($data['password']);
-            $user->password = Hash::make($data['password']);
-        }
-
-        $user->save();
-
-        return redirect()->back()->with('success', 'Perfil actualizado correctamente');
+    if (!empty($data['password'])) {
+        $user->contrasena_hash = Hash::make($data['password']);
     }
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Perfil actualizado correctamente');
+}
+
 }

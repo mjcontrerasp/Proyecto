@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            
-            <div class="login-container">
+        <div class="col-md-10">
+
+            <div class="list-container">
                 <h1>Perfil de Usuario</h1>
                 <p class="subtitle">Actualiza tus datos personales</p>
 
@@ -15,16 +15,17 @@
                     </div>
                 @endif
 
-                <form class="login-form" method="POST" action="{{ route('perfil.update') }}">
+                <form method="POST" action="{{ route('perfil.update') }}" class="perfil-form">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group">
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" 
-                               id="nombre" 
-                               name="nombre" 
-                               placeholder="Tu nombre completo" 
+                        <input type="text"
+                               id="nombre"
+                               name="nombre"
+                               class="form-control"
+                               placeholder="Tu nombre completo"
                                value="{{ old('nombre', auth()->user()->nombre ?? '') }}"
                                required>
                         @error('nombre')
@@ -34,10 +35,11 @@
 
                     <div class="form-group">
                         <label for="email">Correo Electrónico</label>
-                        <input type="email" 
-                               id="email" 
-                               name="email" 
-                               placeholder="tucorreo@ejemplo.com" 
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               class="form-control"
+                               placeholder="tucorreo@ejemplo.com"
                                value="{{ old('email', auth()->user()->email ?? '') }}"
                                required>
                         @error('email')
@@ -47,21 +49,27 @@
 
                     <div class="form-group password-wrapper">
                         <label for="password">Contraseña</label>
-                        <input type="password" 
-                               id="password" 
-                               name="password" 
-                               placeholder="Nueva contraseña (dejar en blanco para no cambiar)">
-                        <button type="button" id="togglePassword">👀</button>
+                        <div class="password-input">
+                            <input type="password"
+                                   id="password"
+                                   name="password"
+                                   class="form-control"
+                                   placeholder="Nueva contraseña (dejar en blanco para no cambiar)">
+                            <button type="button" id="togglePassword" class="toggle-btn">👀</button>
+                        </div>
                         @error('password')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 
-                    <button type="submit">Guardar cambios</button>
+                    <button type="submit" class="btn btn-primary save-btn">
+                        Guardar cambios
+                    </button>
                 </form>
 
-                <div class="divider"></div>
-                <a href="{{ route('home') }}" class="register-link">Volver al inicio</a>
+                <a href="{{ route('home') }}" class="register-link">
+                    Volver al inicio
+                </a>
             </div>
 
         </div>
@@ -70,5 +78,5 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/perfil_usuario.css') }}">
+<link rel="stylesheet" href="{{ asset('css/perfil_usuario.css') }}">
 @endsection

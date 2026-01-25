@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Models\Donacion;
 use Auth;
@@ -12,11 +12,14 @@ class DonacionController extends Controller
      * Mostrar lista de donaciones del usuario
      */
     public function index()
-    {
-        $donaciones = Donacion::where('id_usuario', Auth::id())->get();
-        return view('donaciones.index', ['donaciones' => $donaciones]);
+{
+    $donaciones = Donacion::where('id_usuario', auth()->user()->id_usuario) // ✅ usar id_usuario
+        ->with('voluntario') // carga relación voluntario
+        ->get();
 
-    }
+    return view('donaciones.index', compact('donaciones'));
+}
+
 
     /**
      * Mostrar formulario de crear donación
@@ -112,12 +115,27 @@ class DonacionController extends Controller
     /**
      * Marcar donación como recogida
      */
-    public function recoger($id)
-    {
-        $donacion = Donacion::findOrFail($id);
-        $donacion->update(['estado' => 'Recogida']);
-        return redirect()->back()->with('success', 'Marcada como recogida correctamente');
+    public function recoger(Request $request, $id)
+{
+    $donacion = Donacion::findOrFail($id);
+
+    if($donacion->id_voluntario_asignado !== auth()->id()) {
+        return redirect()->back()->with('error', 'No tienes permiso para recoger esta donación.');
     }
+
+    $request->validate([
+        'id_ong_destino' => 'required|exists:usuarios,id_usuario',
+    ]);
+
+    $donacion->update([
+        'estado' => 'Recogida',
+        'id_ong_destino' => $request->id_ong_destino
+    ]);
+
+    return redirect()->back()->with('success', 'Donación marcada como recogida correctamente.');
+}
+
+
 
     /**
      * Marcar donación como entregada
@@ -156,11 +174,18 @@ class DonacionController extends Controller
      * Confirmar recepción en ONG
      */
     public function confirmarRecepcion($id)
-    {
-        $donacion = Donacion::findOrFail($id);
-        $donacion->update(['estado' => 'Entregada a ONG']);
-        return redirect()->back()->with('success', 'Recepción confirmada');
+{
+    $donacion = Donacion::findOrFail($id);
+
+    if ($donacion->id_ong_destino !== auth()->id()) {
+        return redirect()->back()->with('error', 'No tienes permiso.');
     }
+
+    $donacion->update(['estado' => 'Entregada a ONG']);
+
+    return redirect()->back()->with('success', 'Recepción confirmada');
+}
+
 
     /**
      * Donaciones disponibles para voluntarios
@@ -175,27 +200,53 @@ class DonacionController extends Controller
      * Donaciones en camino (ONG)
      */
     public function enCamino()
-    {
-        $donaciones = Donacion::where('estado', 'En camino')->orWhere('estado', 'Asignada')->get();
-        return view('donaciones.en_camino', ['donaciones' => $donaciones]);
-
+{
+    if(auth()->user()->rol === 'ong') {
+        // Donaciones asignadas a esta ONG y que están en camino
+        $donaciones = Donacion::where('id_ong_destino', auth()->id())
+            ->whereIn('estado', ['Recogida', 'Asignada', 'En camino'])
+            ->with(['comercio', 'voluntario'])
+            ->get();
+    } else {
+        // Para voluntarios, sigue mostrando solo sus donaciones asignadas
+        $donaciones = Donacion::where('id_voluntario_asignado', auth()->id())
+            ->whereIn('estado', ['Asignada', 'Recogida'])
+            ->with(['comercio', 'voluntario'])
+            ->get();
     }
+
+    return view('donaciones.en_camino', compact('donaciones'));
+}
+
+
 
     /**
      * Historial ONG
      */
     public function historialOng()
-    {
-        $donaciones = Donacion::where('estado', 'Entregada a ONG')->get();
-        return view('historial_ong', ['donaciones' => $donaciones]);
-    }
+{
+    $donaciones = Donacion::where('id_ong_destino', auth()->id())
+        ->whereIn('estado', ['Recogida', 'Entregada a ONG'])
+        ->get();
+
+    return view('historial_ong', ['donaciones' => $donaciones]);
+}
+
 
     /**
      * Historial Voluntario
      */
     public function historialVoluntario()
-    {
-        $donaciones = Donacion::where('id_voluntario_asignado', Auth::id())->get();
-        return view('historial_voluntario', ['donaciones' => $donaciones]);
-    }
+{
+    $donaciones = Donacion::where('id_voluntario_asignado', Auth::id())
+                           ->with('comercio') // para acceder al comercio desde la vista
+                           ->get();
+
+    // Aquí corregimos User por Usuario
+    $ongs = Usuario::where('rol', 'ong')->get(); // Trae todas las ONGs
+
+    return view('historial_voluntario', compact('donaciones', 'ongs'));
+}
+
+
 }

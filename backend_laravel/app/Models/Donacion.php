@@ -15,16 +15,18 @@ class Donacion extends Model
     
 
     protected $fillable = [
-        'id_usuario',
-        'tipo_comida',
-        'cantidad',
-        'fecha_hora',
-        'punto_recogida',
-        'observaciones',
-        'foto',
-        'estado',
-        'id_voluntario_asignado'
-    ];
+    'id_usuario',
+    'tipo_comida',
+    'cantidad',
+    'fecha_hora',
+    'punto_recogida',
+    'observaciones',
+    'foto',
+    'estado',
+    'id_voluntario_asignado',
+    'id_ong_destino', 
+];
+
     public $timestamps = true;
 
     public function usuario()
@@ -33,13 +35,21 @@ class Donacion extends Model
     }
 
     public function voluntario()
-    {
-        return $this->belongsTo(User::class, 'id_voluntario_asignado', 'id_usuario');
-    }
+{
+    return $this->belongsTo(User::class, 'id_voluntario_asignado', 'id_usuario');
+}
+
+
 
     public function comercio()
 {
-    return $this->hasOne(Comercio::class, 'id_usuario', 'id_usuario');
+    return $this->belongsTo(Comercio::class, 'id_usuario', 'id_usuario');
 }
+
+public function ong()
+{
+    return $this->belongsTo(Usuario::class, 'id_ong_destino', 'id_usuario');
+}
+
 
 }

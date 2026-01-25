@@ -1,4 +1,4 @@
-/* Basado en tu estilo de login */
+/* Basado en tu estilo de login — compatible con layouts.app */
 * {
     margin: 0;
     padding: 0;
@@ -9,10 +9,11 @@ body {
     font-family: 'Inter', system-ui, sans-serif;
     background-color: #f8f9fa;
     color: #212529;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+}
+
+/* En vez de centrar el body, centramos SOLO la tarjeta */
+.container {
+    padding: 2rem 1rem;
 }
 
 .login-container {
@@ -20,7 +21,8 @@ body {
     padding: 2rem;
     border-radius: 10px;
     max-width: 420px;
-    width: 90%;
+    width: 100%;
+    margin: 2rem auto;   /* 👈 centra sin romper header/footer */
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
 }
