@@ -1,25 +1,43 @@
-# Guía de Estilo - SocialFood Badajoz
+# Guía de Estilos - SocialFood
 
-## Principios de UX
-- Jerarquía clara, etiquetas persistentes, feedback inmediato.
-- Responsive en móvil y escritorio (ancho máximo 420px).
-- Accesibilidad por teclado, contraste ≥ 4.5:1, WCAG AA.
 
-## Paleta de colores
-- Primario: #0d6efd
-- Fondo neutro y textos contrastados
+---
 
-## Tipografía
-- Fuente del sistema o Inter, 16px base, line-height 1.4
+## 1. Tipografía
+- Fuente principal: `system-ui, Inter, sans-serif`.
+- Títulos (`h1`): grandes y visibles.
+- Subtítulos (`.subtitle`): más pequeños y de color gris.
+- Texto normal y labels: legible, tamaño medio.
 
-## Componentes del Login
-- Campo email y contraseña con autocompletado y botón mostrar/ocultar.
-- Checkbox “Recordarme” y enlace “¿Olvidaste la contraseña?”
-- Mensajes de error genéricos y feedback de carga.
-- 2FA opcional accesible.
+---
 
-## Accesibilidad
-- Labels visibles y correctamente asociados
-- Errores programáticos (`role="alert"`)
-- Navegación completa por teclado
-- i18n para todos los textos
+## 2. Colores
+- Fondos principales: claros, tonos suaves (#f5f5f5, #fafafa, #ffffff).
+- Botones: azul (#0d6efd) con texto blanco.
+- Enlaces: azul, resaltan sobre el fondo claro.
+
+---
+
+## 3. Layout y Contenedores
+- Contenedores centrados, con padding.
+- Formulario de login/registro: ancho limitado, campos verticales.
+- Checkbox y botones alineados de forma clara y accesible.
+
+---
+
+## 4. Formularios
+- Campos de texto, correo, contraseña y número con bordes redondeados.
+- Checkbox: al lado del texto, tamaño adecuado.
+
+---
+
+## 5. Botones
+- Llamativos, fondo azul.
+- Bordes redondeados, ancho completo.
+- Efectos de enfoque y desactivado visibles.
+
+---
+
+## 6. Componentes especiales
+- Password toggle: botón para mostrar/ocultar contraseña.
+- Links y textos informativos: visibles y coherentes con la paleta de colores.

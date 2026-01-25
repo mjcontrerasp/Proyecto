@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    min-height: 100vh;
+}
+
+/* Contenedor principal de la lista */
+.list-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto; /* centra sin romper navbar/footer */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Título */
+.list-container h1 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Subtítulo */
+.subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+/* Tabla */
+.donaciones-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.donaciones-table th,
+.donaciones-table td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.donaciones-table th {
+    background-color: #f1f3f5;
+    font-weight: 600;
+}
+
+.donaciones-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Botones */
+.edit-btn {
+    padding: 0.35rem 0.7rem;
+    background-color: #0d6efd;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-right: 0.3rem;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.delete-btn {
+    padding: 0.35rem 0.7rem;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.edit-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.delete-btn:hover {
+    background-color: #bb2d3b;
+}
+
+/* Botón crear donación */
+.register-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: #fff;
+    background-color: #198754;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.register-link:hover {
+    background-color: #157347;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .donaciones-table {
+        font-size: 0.85rem;
+    }
+
+    .donaciones-table th,
+    .donaciones-table td {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        margin-bottom: 0.25rem;
+    }
+}

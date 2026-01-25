@@ -36,7 +36,7 @@ class registroControlador {
         }
 
         // Intentamos registrar el usuario
-        $id = $this->modelo->registrar($nombre, $email, $telefono, $password, $rol);
+        $id = $this->modelo->registrar($nombre, $email, $telefono, $password);
 
         // Si no se pudo registrar (email repetido, error SQL...)
         if (!$id) {
