@@ -32,8 +32,9 @@ class AuthController extends Controller
             }
 
             if ($rol === 'voluntario') {
-                return redirect()->route('voluntario.donaciones');
-            }
+    return redirect()->route('donaciones.disponibles');
+}
+
             if ($rol === 'ong') {
             return redirect()->route('home'); // o una ruta ONG cuando la tengas
             }
