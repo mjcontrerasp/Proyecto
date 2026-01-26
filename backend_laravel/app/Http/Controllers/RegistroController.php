@@ -7,6 +7,16 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controlador de Registro de Usuarios
+ *
+ * Gestiona el proceso de registro de nuevos usuarios en el sistema,
+ * incluyendo comercios y voluntarios.
+ *
+ * @package App\Http\Controllers
+ * @author SocialFood Team
+ * @version 1.0
+ */
 class RegistroController extends Controller
 {
     public function showRegister()

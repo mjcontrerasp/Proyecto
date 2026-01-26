@@ -6,10 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\Donacion;
 use Auth;
 
+/**
+ * Controlador de Gestión de Donaciones
+ *
+ * Gestiona el ciclo completo de las donaciones de alimentos:
+ * creación, asignación, recogida, transporte y entrega.
+ * Implementa la lógica de negocio para comercios, voluntarios y ONGs.
+ *
+ * @package App\Http\Controllers
+ * @author SocialFood Team
+ * @version 1.0
+ */
 class DonacionController extends Controller
 {
     /**
-     * Mostrar lista de donaciones del usuario
+     * Muestra la lista de donaciones del usuario autenticado
+     *
+     * Obtiene todas las donaciones creadas por el comercio autenticado,
+     * incluyendo la relación con el voluntario asignado.
+     *
+     * @return \Illuminate\View\View Vista con lista de donaciones
      */
     public function index()
 {
@@ -22,7 +38,12 @@ class DonacionController extends Controller
 
 
     /**
-     * Mostrar formulario de crear donación
+     * Muestra el formulario para crear una nueva donación
+     *
+     * Renderiza la vista del formulario donde el comercio puede
+     * registrar un nuevo excedente de alimentos para donación.
+     *
+     * @return \Illuminate\View\View Vista del formulario de creación
      */
     public function create()
 {
@@ -31,7 +52,14 @@ class DonacionController extends Controller
 
 
     /**
-     * Guardar nueva donación
+     * Guarda una nueva donación en la base de datos
+     *
+     * Valida los datos del formulario, asocia la donación al usuario autenticado,
+     * almacena la foto si fue subida y establece el estado inicial.
+     *
+     * @param  \Illuminate\Http\Request  $request Datos del formulario
+     * @return \Illuminate\Http\RedirectResponse Redirección a lista de donaciones
+     * @throws \Illuminate\Validation\ValidationException Si los datos son inválidos
      */
     public function store(Request $request)
     {
@@ -57,7 +85,14 @@ class DonacionController extends Controller
     }
 
     /**
-     * Mostrar detalle de donación
+     * Muestra el detalle completo de una donación específica
+     *
+     * Obtiene los datos completos de una donación incluyendo
+     * información del comercio, voluntario y estado actual.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\View\View Vista con detalle de la donación
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function show($id)
     {
@@ -66,7 +101,14 @@ class DonacionController extends Controller
     }
 
     /**
-     * Mostrar formulario de editar
+     * Muestra el formulario para editar una donación existente
+     *
+     * Obtiene los datos de la donación y renderiza el formulario
+     * pre-llenado para que el comercio pueda modificarla.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\View\View Vista del formulario de edición
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function edit($id)
 {
@@ -75,7 +117,16 @@ class DonacionController extends Controller
 }
 
     /**
-     * Actualizar donación
+     * Actualiza una donación existente en la base de datos
+     *
+     * Valida los datos modificados, actualiza la foto si fue cambiada
+     * y guarda los cambios en la donación.
+     *
+     * @param  \Illuminate\Http\Request  $request Datos del formulario
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección a lista de donaciones
+     * @throws \Illuminate\Validation\ValidationException Si los datos son inválidos
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function update(Request $request, $id)
     {
@@ -102,7 +153,14 @@ class DonacionController extends Controller
     }
 
     /**
-     * Eliminar donación
+     * Elimina una donación de la base de datos
+     *
+     * Elimina permanentemente una donación. Solo el comercio
+     * que la creó puede eliminarla.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección a lista con mensaje
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function destroy($id)
     {
@@ -113,7 +171,16 @@ class DonacionController extends Controller
     }
 
     /**
-     * Marcar donación como recogida
+     * Marca una donación como recogida por el voluntario
+     *
+     * Verifica que el voluntario autenticado es quien tiene asignada
+     * la donación, valida la ONG de destino y actualiza el estado.
+     *
+     * @param  \Illuminate\Http\Request  $request ID de la ONG destino
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje
+     * @throws \Illuminate\Validation\ValidationException Si la ONG no existe
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function recoger(Request $request, $id)
 {
@@ -138,7 +205,14 @@ class DonacionController extends Controller
 
 
     /**
-     * Marcar donación como entregada
+     * Marca una donación como entregada a la ONG
+     *
+     * Cambia el estado de la donación a 'Entregada' cuando el
+     * voluntario completa la entrega en la ONG destino.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje de éxito
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function entregar($id)
     {
@@ -148,7 +222,14 @@ class DonacionController extends Controller
     }
 
     /**
-     * Confirmar recogida de donación
+     * Confirma la recogida de la donación por parte del comercio
+     *
+     * Permite al comercio confirmar que el voluntario ha recogido
+     * exitosamente los alimentos de su establecimiento.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function confirmar($id)
     {
@@ -158,7 +239,14 @@ class DonacionController extends Controller
     }
 
     /**
-     * Voluntario acepta donación
+     * El voluntario acepta hacerse cargo de una donación
+     *
+     * Asigna la donación al voluntario autenticado y cambia
+     * el estado a 'Asignada' para iniciar el proceso de transporte.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje de éxito
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
      */
     public function aceptar($id)
     {
@@ -171,7 +259,15 @@ class DonacionController extends Controller
     }
 
     /**
-     * Confirmar recepción en ONG
+     * La ONG confirma la recepción de la donación
+     *
+     * Verifica que la ONG autenticada es el destino de la donación
+     * y actualiza el estado final a 'Entregada a ONG'.
+     *
+     * @param  int  $id ID de la donación
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Si no existe
+     * @throws \Illuminate\Auth\Access\AuthorizationException Si no tiene permiso
      */
     public function confirmarRecepcion($id)
 {
@@ -188,7 +284,12 @@ class DonacionController extends Controller
 
 
     /**
-     * Donaciones disponibles para voluntarios
+     * Lista todas las donaciones disponibles para asignación
+     *
+     * Muestra a los voluntarios todas las donaciones que están
+     * en estado 'No asignada' y pueden ser aceptadas.
+     *
+     * @return \Illuminate\View\View Vista con donaciones disponibles
      */
     public function disponibles()
     {
@@ -197,7 +298,13 @@ class DonacionController extends Controller
     }
 
     /**
-     * Donaciones en camino (ONG)
+     * Lista las donaciones en proceso de transporte
+     *
+     * Para ONGs: muestra donaciones asignadas a ellos que están en camino.
+     * Para voluntarios: muestra sus donaciones asignadas o recogidas.
+     * Incluye información del comercio y voluntario.
+     *
+     * @return \Illuminate\View\View Vista con donaciones en camino
      */
     public function enCamino()
 {
@@ -221,7 +328,12 @@ class DonacionController extends Controller
 
 
     /**
-     * Historial ONG
+     * Muestra el historial completo de donaciones recibidas por la ONG
+     *
+     * Lista todas las donaciones que han sido entregadas a la ONG
+     * autenticada, tanto recogidas como entregadas completamente.
+     *
+     * @return \Illuminate\View\View Vista con historial de la ONG
      */
     public function historialOng()
 {
@@ -234,7 +346,13 @@ class DonacionController extends Controller
 
 
     /**
-     * Historial Voluntario
+     * Muestra el historial de donaciones del voluntario
+     *
+     * Lista todas las donaciones que el voluntario autenticado ha
+     * transportado, incluyendo información del comercio origen.
+     * También obtiene la lista de ONGs disponibles.
+     *
+     * @return \Illuminate\View\View Vista con historial del voluntario
      */
     public function historialVoluntario()
 {

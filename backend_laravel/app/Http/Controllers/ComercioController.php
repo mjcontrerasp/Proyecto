@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Comercio;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controlador de Gestión de Comercios
+ *
+ * Gestiona el registro y panel de control de los comercios
+ * que donan alimentos en la plataforma SocialFood.
+ *
+ * @package App\Http\Controllers
+ * @author SocialFood Team
+ * @version 1.0
+ */
 class ComercioController extends Controller
 {
     public function create()
