@@ -19,9 +19,9 @@ class SocialFoodTest extends TestCase
             'nombre' => 'Comercio Test',
             'email' => 'comercio@test.com',
             'telefono' => '123456789',
-            'tipo_usuario' => 'comercio',
-            'password' => '1234',
-            'password_confirmation' => '1234'
+            'rol' => 'comercio', // <- cambiado
+            'contrasena_hash' => bcrypt('1234'),
+            'contrasena_hash_confirmation' => '1234'
         ]);
 
         $response->assertRedirect(route('comercio.create'));
@@ -33,12 +33,12 @@ class SocialFoodTest extends TestCase
     {
         $usuario = User::factory()->create([
             'rol' => 'voluntario',
-            'password' => bcrypt('1234')
+            'contrasena_hash' => bcrypt('1234')
         ]);
 
         $response = $this->post('/login', [
             'email' => $usuario->email,
-            'password' => '1234'
+            'password' => '1234' // Laravel automáticamente usa getAuthPassword()
         ]);
 
         $response->assertRedirect(route('donaciones.disponibles'));
@@ -55,9 +55,9 @@ class SocialFoodTest extends TestCase
             'nombre' => 'Nuevo Usuario',
             'email' => 'testexistente@test.com',
             'telefono' => '987654321',
-            'tipo_usuario' => 'voluntario',
-            'password' => '1234',
-            'password_confirmation' => '1234'
+            'rol' => 'voluntario',
+            'contrasena_hash' => bcrypt('1234'),
+            'contrasena_hash_confirmation' => '1234'
         ]);
 
         $response->assertSessionHasErrors('email');
@@ -78,7 +78,10 @@ class SocialFoodTest extends TestCase
         ]);
 
         $response->assertRedirect(route('donaciones.index'));
-        $this->assertDatabaseHas('donaciones', ['tipo_comida' => 'Pan', 'id_usuario' => $comercio->id_usuario]);
+        $this->assertDatabaseHas('donaciones', [
+            'tipo_comida' => 'Pan',
+            'id_usuario' => $comercio->id_usuario
+        ]);
     }
 
     /** @test */

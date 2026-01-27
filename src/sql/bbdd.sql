@@ -32,7 +32,7 @@ CREATE TABLE donaciones (
     estado VARCHAR(50) NOT NULL DEFAULT 'No asignada',
     created_at TIMESTAMP NULL DEFAULT NULL,
     updated_at TIMESTAMP NULL DEFAULT NULL,
-    id_ong_destino INT NULL
+    id_ong_destino INT NULL,
 
     CONSTRAINT fk_donaciones_usuario
         FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
