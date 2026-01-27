@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;   
+use Illuminate\Support\Facades\Hash;
 /**
  * Controlador de Autenticación
  *
@@ -118,6 +119,27 @@ class AuthController extends Controller
      */
     public function recuperarPassword(Request $request)
     {
-        return back()->with('status', 'Función en construcción 😅');
+        $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    $usuario = User::where('email', $request->email)->first();
+
+    if (!$usuario) {
+        return back()->with('error', 'No existe ningún usuario con ese correo.');
+    }
+
+    // Generamos una nueva contraseña cutre
+    $nuevaPassword = 'sf' . rand(1000, 9999);
+
+    // La guardamos hasheada
+    $usuario->contrasena_hash = Hash::make($nuevaPassword);
+    $usuario->save();
+
+    // Mostramos la nueva contraseña en pantalla
+    return back()->with([
+        'success'  => 'Se ha generado una nueva contraseña.',
+        'password' => $nuevaPassword
+    ]);
     }
 }
