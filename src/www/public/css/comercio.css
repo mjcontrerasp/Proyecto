@@ -82,3 +82,42 @@ button:focus {
     font-size: 0.8rem;
     height: 16px;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .container-main {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .topbar h1 {
+        font-size: 1.5rem;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+
+    button {
+        padding: 14px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-main {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .topbar h1 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+}

@@ -72,3 +72,44 @@ h1 {
 .register-link:hover {
     text-decoration: underline;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 1rem 0;
+    }
+
+    .login-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .donacion-info p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .confirm-btn {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+}

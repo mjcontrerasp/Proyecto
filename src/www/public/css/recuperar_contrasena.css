@@ -86,3 +86,46 @@ input:focus {
 .small a:hover {
     text-decoration: underline;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 20px 16px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    input {
+        font-size: 16px; /* Evita zoom en iOS */
+        padding: 14px;
+    }
+
+    .btn-primario {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px 12px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    .small {
+        font-size: 0.85rem;
+    }
+}

@@ -100,3 +100,49 @@ button[type="submit"]:disabled {
     color: red;
     font-size: 0.875rem;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 2rem auto;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 16px; /* Evita zoom automático en iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .login-form {
+        gap: 0.8rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.8rem;
+    }
+}

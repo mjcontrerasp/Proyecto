@@ -19,11 +19,30 @@ use Illuminate\Support\Facades\Auth;
  */
 class RegistroController extends Controller
 {
+    /**
+     * Muestra el formulario de registro de usuario
+     *
+     * Renderiza la vista para crear una nueva cuenta en el sistema.
+     *
+     * @return \Illuminate\View\View Vista de registro
+     */
     public function showRegister()
     {
         return view('registrar-usuario');
     }
 
+    /**
+     * Procesa el registro de un nuevo usuario
+     *
+     * Valida los datos, crea el usuario con contraseña hasheada y
+     * autentica la sesión. Redirige según el tipo de usuario:
+     * - comercio: a completar datos del comercio
+     * - ong / voluntario: al inicio
+     *
+     * @param  \Illuminate\Http\Request $request Datos del formulario de registro
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje
+     * @throws \Illuminate\Validation\ValidationException Si los datos no son válidos
+     */
     public function registrar(Request $request)
 {
     $data = $request->validate([

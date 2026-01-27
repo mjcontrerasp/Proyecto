@@ -73,3 +73,59 @@ h1 {
 .register-link:hover {
     text-decoration: underline;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .list-container {
+        padding: 1.5rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .donaciones-table {
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .donaciones-table th,
+    .donaciones-table td {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .accept-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .list-container {
+        padding: 1rem;
+        margin: 0.5rem;
+        width: calc(100% - 1rem);
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .donaciones-table {
+        font-size: 0.75rem;
+    }
+
+    .accept-btn {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.75rem;
+    }
+}

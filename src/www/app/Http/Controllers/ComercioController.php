@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Auth;
  */
 class ComercioController extends Controller
 {
+    /**
+     * Muestra el formulario para completar datos del comercio
+     *
+     * Restringido a usuarios con rol 'comercio'. Si el usuario no
+     * es un comercio, se responde con 403.
+     *
+     * @return \Illuminate\View\View Vista de registro de comercio
+     */
     public function create()
     {
         if (Auth::user()->rol !== 'comercio') {
@@ -27,6 +35,17 @@ class ComercioController extends Controller
         return view('registro-comercio');
     }
 
+    /**
+     * Registra un comercio asociado al usuario autenticado
+     *
+     * Valida los datos del formulario y crea el registro en la tabla
+     * `comercios` enlazándolo con el usuario actual. Al finalizar,
+     * redirige al listado de donaciones del comercio.
+     *
+     * @param  \Illuminate\Http\Request $request Datos del formulario
+     * @return \Illuminate\Http\RedirectResponse Redirección con mensaje de éxito
+     * @throws \Illuminate\Validation\ValidationException Si los datos no son válidos
+     */
     public function store(Request $request)
 {
     $request->validate([
@@ -48,6 +67,14 @@ class ComercioController extends Controller
         ->with('success', 'Comercio registrado correctamente. Ya puedes publicar donaciones.');
 }
 
+    /**
+     * Muestra el panel del comercio autenticado
+     *
+     * Restringido a usuarios con rol 'comercio'. Renderiza la vista
+     * principal del panel de gestión de comercios.
+     *
+     * @return \Illuminate\View\View Vista del panel de comercio
+     */
     public function panel()
     {
         if (Auth::user()->rol !== 'comercio') {

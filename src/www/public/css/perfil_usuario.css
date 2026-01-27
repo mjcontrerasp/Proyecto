@@ -114,3 +114,45 @@ button[type="submit"]:disabled {
 .register-link:hover {
     text-decoration: underline;
 }
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+
+    .login-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.8rem;
+    }
+}
