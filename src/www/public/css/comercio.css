@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: system-ui, Inter, sans-serif;
+    background: #f8f9fa;
+    color: #111;
+    min-height: 100vh;
+}
+
+/* Contenedor principal visual */
+.container-main {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+}
+
+/* Header */
+.topbar h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Cards */
+.card {
+    border-radius: 10px;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #0d6efd55;
+    border-color: #0d6efd;
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0b5ed7;
+}
+
+button:focus {
+    outline: 3px solid #0d6efd55;
+}
+
+/* Mensajes de error */
+.error {
+    color: #d00;
+    font-size: 0.8rem;
+    height: 16px;
+}
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .container-main {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .topbar h1 {
+        font-size: 1.5rem;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+
+    button {
+        padding: 14px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-main {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .topbar h1 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+}

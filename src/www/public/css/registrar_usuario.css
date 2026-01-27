@@ -1,0 +1,148 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.login-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+
+    margin: 4rem auto; /* centra horizontal y separa del header/footer */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #0d6efd;
+    outline: 3px solid rgba(13,110,253,0.25);
+}
+
+/* Checkbox */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox input {
+    width: auto;
+}
+
+/* Botón */
+button[type="submit"] {
+    padding: 0.7rem;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Errores */
+.error {
+    color: red;
+    font-size: 0.875rem;
+}
+
+/* ========== RESPONSIVE MÓVIL ========== */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 2rem auto;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 16px; /* Evita zoom automático en iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .login-form {
+        gap: 0.8rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.8rem;
+    }
+}
